@@ -1,5 +1,7 @@
 library awesome_dialog;
 
+import 'package:awesome_dialog/src/anims/new_headers.dart';
+
 import 'src/anims/anims.dart';
 import 'src/animated_button.dart';
 import 'src/anims/flare_header.dart';
@@ -201,7 +203,7 @@ class AwesomeDialog {
   Widget? get _buildHeader {
     if (customHeader != null) return customHeader;
     if (dialogType == DialogType.NO_HEADER) return null;
-    return FlareHeader(
+    return NewHeader(
       loop: headerAnimationLoop,
       dialogType: this.dialogType,
     );
