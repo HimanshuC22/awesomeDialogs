@@ -12,45 +12,109 @@ class NewHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (dialogType) {
       case DialogType.INFO:
-        return FlareActor(
-          "packages/awesome_dialog/assets/flare/info2.flr",
-          alignment: Alignment.center,
-          fit: BoxFit.cover,
-          animation: loop ? 'appear_loop' : 'appear',
-          callback: (call) {},
+        return ClipOval(
+          child: Container(
+            color: Color.fromRGBO(253, 185, 19, 1),
+            child: Center(
+              child: Text(
+                String.fromCharCode(Icons.priority_high_rounded.codePoint),
+                style: TextStyle(
+                  inherit: false,
+                  color: Colors.white,
+                  fontSize: 60.0,
+                  fontFamily: Icons.priority_high_rounded.fontFamily,
+                  package: Icons.priority_high_rounded.fontPackage,
+                ),
+              ),
+            ),
+            height: 72,
+            width: 72,
+          ),
         );
+        ;
       case DialogType.INFO_REVERSED:
-        return FlareActor(
-          loop
-              ? "packages/awesome_dialog/assets/flare/info.flr"
-              : "packages/awesome_dialog/assets/flare/info_without_loop.flr",
-          alignment: Alignment.center,
-          fit: BoxFit.cover,
-          animation: 'appear',
+        return ClipOval(
+          child: Container(
+            color: Color.fromRGBO(253, 185, 19, 1),
+            child: Center(
+              child: Text(
+                String.fromCharCode(Icons.priority_high_rounded.codePoint),
+                style: TextStyle(
+                  inherit: false,
+                  color: Colors.white,
+                  fontSize: 60.0,
+                  fontFamily: Icons.priority_high_rounded.fontFamily,
+                  package: Icons.priority_high_rounded.fontPackage,
+                ),
+              ),
+            ),
+            height: 72,
+            width: 72,
+          ),
         );
+        ;
       case DialogType.QUESTION:
-        return FlareActor(
-          "packages/awesome_dialog/assets/flare/question.flr",
-          alignment: Alignment.center,
-          fit: BoxFit.cover,
-          animation: loop ? 'anim_loop' : 'anim',
-          callback: (call) {},
+        return ClipOval(
+          child: Container(
+            color: Color.fromRGBO(253, 185, 19, 1),
+            child: Center(
+              child: Text(
+                "?",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  inherit: false,
+                  color: Colors.white,
+                  fontSize: 60.0,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: Icons.close_rounded.fontFamily,
+                  package: Icons.close_rounded.fontPackage,
+                ),
+              ),
+            ),
+            height: 72,
+            width: 72,
+          ),
         );
       case DialogType.WARNING:
-        return FlareActor(
-          loop
-              ? "packages/awesome_dialog/assets/flare/warning.flr"
-              : "packages/awesome_dialog/assets/flare/warning_without_loop.flr",
-          alignment: Alignment.center,
-          fit: BoxFit.cover,
-          animation: 'appear',
+        return ClipOval(
+          child: Container(
+            color: Color.fromRGBO(253, 185, 19, 1),
+            child: Center(
+              child: Text(
+                String.fromCharCode(Icons.priority_high_rounded.codePoint),
+                style: TextStyle(
+                  inherit: false,
+                  color: Colors.white,
+                  fontSize: 60.0,
+                  fontFamily: Icons.priority_high_rounded.fontFamily,
+                  package: Icons.priority_high_rounded.fontPackage,
+                ),
+              ),
+            ),
+            height: 72,
+            width: 72,
+          ),
         );
       case DialogType.ERROR:
-        return FlareActor(
-          "packages/awesome_dialog/assets/flare/error.flr",
-          alignment: Alignment.center,
-          fit: BoxFit.fill,
-          animation: loop ? 'Error' : 'Error_no_loop',
+        return ClipOval(
+          child: Container(
+            color: Color.fromRGBO(253, 185, 19, 1),
+            child: Center(
+              child: Text(
+                String.fromCharCode(Icons.close_rounded.codePoint),
+                style: TextStyle(
+                  inherit: false,
+                  color: Colors.white,
+                  fontSize: 60.0,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: Icons.close_rounded.fontFamily,
+                  package: Icons.close_rounded.fontPackage,
+                ),
+              ),
+            ),
+            height: 72,
+            width: 72,
+          ),
         );
       case DialogType.SUCCES:
         return ClipOval(
