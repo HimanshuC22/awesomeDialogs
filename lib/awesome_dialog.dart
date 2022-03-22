@@ -26,6 +26,8 @@ class AwesomeDialog {
   /// [@required]
   final BuildContext context;
 
+  final Color? barrierColor;
+
   /// Dialog Type can be INFO, WARNING, ERROR, SUCCES, NO_HEADER
   final DialogType dialogType;
 
@@ -119,6 +121,7 @@ class AwesomeDialog {
   AwesomeDialog({
     required this.context,
     this.dialogType = DialogType.INFO,
+    this.barrierColor,
     this.customHeader,
     this.title,
     this.desc,
@@ -159,9 +162,10 @@ class AwesomeDialog {
   DismissType _dismissType = DismissType.OTHER;
 
   Future show() => showDialog(
-          context: context,
+          context: this.context,
           useRootNavigator: useRootNavigator,
           barrierDismissible: dismissOnTouchOutside,
+          barrierColor: (this.barrierColor!=null) ? this.barrierColor : Colors.black.withOpacity(0.5),
           builder: (BuildContext context) {
             if (autoHide != null) {
               Future.delayed(autoHide!).then((value) => dismiss());
@@ -199,7 +203,7 @@ class AwesomeDialog {
     if (dialogType == DialogType.NO_HEADER) return null;
     return FlareHeader(
       loop: headerAnimationLoop,
-      dialogType: dialogType,
+      dialogType: this.dialogType,
     );
   }
 
@@ -210,9 +214,9 @@ class AwesomeDialog {
           borderSide: borderSide,
           borderRadius: dialogBorderRadius,
           header: _buildHeader,
-          title: title,
-          desc: desc,
-          body: body,
+          title: this.title,
+          desc: this.desc,
+          body: this.body,
           isDense: isDense,
           alignment: aligment,
           keyboardAware: keyboardAware,
@@ -221,7 +225,7 @@ class AwesomeDialog {
           btnOk: btnOk ?? (btnOkOnPress != null ? _buildFancyButtonOk : null),
           btnCancel: btnCancel ??
               (btnCancelOnPress != null ? _buildFancyButtonCancel : null),
-          showCloseIcon: showCloseIcon,
+          showCloseIcon: this.showCloseIcon,
           onClose: () {
             _dismissType = DismissType.TOP_ICON;
             dismiss.call();
@@ -259,9 +263,8 @@ class AwesomeDialog {
       );
 
   dismiss() {
-    if (!isDissmisedBySystem) {
+    if (!isDissmisedBySystem)
       Navigator.of(context, rootNavigator: useRootNavigator).pop();
-    }
   }
 
   Future<bool> _onWillPop() async => dismissOnBackKeyPress;

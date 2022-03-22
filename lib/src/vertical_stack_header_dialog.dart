@@ -61,7 +61,7 @@ class VerticalStackDialog extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: borderRadius ??
                     const BorderRadius.all(
-                      Radius.circular(10),
+                      const Radius.circular(10),
                     ),
                 side: borderSide ?? BorderSide.none,
               ),
@@ -86,7 +86,7 @@ class VerticalStackDialog extends StatelessWidget {
                                 Flexible(
                                   fit: FlexFit.loose,
                                   child: SingleChildScrollView(
-                                    physics: const BouncingScrollPhysics(),
+                                    physics: BouncingScrollPhysics(),
                                     child: Text(
                                       desc!,
                                       textAlign: TextAlign.center,
@@ -130,7 +130,7 @@ class VerticalStackDialog extends StatelessWidget {
             ),
           ),
           if (header != null)
-            SizedBox(
+            Container(
               width: width ?? mediaQueryData.size.width,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -141,7 +141,7 @@ class VerticalStackDialog extends StatelessWidget {
                     ),
                     child: CircleAvatar(
                       backgroundColor: dialogBackgroundColor ?? theme.cardColor,
-                      radius: 55.0,
+                      radius: 45.0,
                       child: header,
                     ),
                   ),
